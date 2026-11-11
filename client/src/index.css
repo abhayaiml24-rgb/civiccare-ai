@@ -1,0 +1,17 @@
+body {
+  background-color: #f4f6f9;
+}
+
+.card {
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.card:hover {
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+  transition: box-shadow 0.2s ease;
+}
+
+.navbar-brand {
+  letter-spacing: 1px;
+}
