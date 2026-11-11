@@ -3,7 +3,7 @@ import axios from 'axios';
 import ReportForm from './components/ReportForm';
 import Chatbot from './components/Chatbot';
 
-const API = 'http://localhost:5000/api';
+const API = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 const CATEGORIES = ['Electricity', 'Water', 'Roads', 'Sanitation', 'Safety', 'Other'];
 const STATUSES = ['Pending', 'In Progress', 'Resolved'];
 const PRIORITIES = ['Low', 'Medium', 'High'];

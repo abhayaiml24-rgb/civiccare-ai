@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 
-const API = 'http://localhost:5000/api';
+const API = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
 export default function ReportForm({ onCreated }) {
   const [form, setForm] = useState({ title: '', description: '', location: '' });
