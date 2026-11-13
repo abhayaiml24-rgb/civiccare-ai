@@ -42,6 +42,11 @@ router.get('/stats', async (req, res) => {
   res.json(stats);
 });
 
+// ADMIN CHECK (verifies the admin key)
+router.get('/admin-check', adminOnly, (req, res) => {
+  res.json({ ok: true });
+});
+
 // READ (with filters: ?category=Water&status=Pending&priority=High)
 router.get('/', async (req, res) => {
   const filter = {};

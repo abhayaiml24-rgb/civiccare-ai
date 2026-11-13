@@ -40,6 +40,23 @@ export default function App() {
     }
   };
 
+  // verifies the key with the server before turning admin mode on
+  const enterAdminMode = async () => {
+    if (!adminKey) return;
+    try {
+      await axios.get(`${API}/complaints/admin-check`, adminHeaders);
+      setIsAdmin(true);
+    } catch (err) {
+      alert('Wrong admin key');
+      setAdminKey('');
+    }
+  };
+
+  const exitAdminMode = () => {
+    setIsAdmin(false);
+    setAdminKey('');
+  };
+
   const updateStatus = async (id, status) => {
     try {
       await axios.put(`${API}/complaints/${id}`, { status }, adminHeaders);
@@ -65,7 +82,7 @@ export default function App() {
         <div className="container">
           <span className="navbar-brand mb-0 h1">🚨 CivicCare AI</span>
           {isAdmin ? (
-            <button className="btn btn-outline-light btn-sm" onClick={() => setIsAdmin(false)}>
+            <button className="btn btn-outline-light btn-sm" onClick={exitAdminMode}>
               Exit Admin Mode
             </button>
           ) : (
@@ -76,11 +93,9 @@ export default function App() {
                 placeholder="Admin key"
                 value={adminKey}
                 onChange={e => setAdminKey(e.target.value)}
+                onKeyDown={e => e.key === 'Enter' && enterAdminMode()}
               />
-              <button
-                className="btn btn-light btn-sm text-nowrap"
-                onClick={() => adminKey && setIsAdmin(true)}
-              >
+              <button className="btn btn-light btn-sm text-nowrap" onClick={enterAdminMode}>
                 Admin Mode
               </button>
             </div>
