@@ -101,16 +101,6 @@ civiccare/
 
 The client reads the API address from `VITE_API_URL` and falls back to `http://localhost:5000/api`.
 
-## Screenshots
-
-| Dashboard | Report with AI result |
-|---|---|
-| ![Dashboard](docs/dashboard.png) | ![AI result](docs/ai-result.png) |
-
-| Admin mode | Chatbot |
-|---|---|
-| ![Admin mode](docs/admin.png) | ![Chatbot](docs/chatbot.png) |
-
 ## Limitations and future scope
 
 - No individual user accounts yet. Admin actions use a shared admin key.
