@@ -38,7 +38,8 @@ async function callAI(prompt) {
       'x-goog-api-key': process.env.AI_API_KEY
     },
     body: JSON.stringify({
-      contents: [{ parts: [{ text: prompt }] }]
+      contents: [{ parts: [{ text: prompt }] }],
+      generationConfig: { thinkingConfig: { thinkingLevel: 'LOW' } }
     })
   });
 
@@ -82,9 +83,14 @@ function faqReply(message) {
 async function chatReply(message) {
   if (!process.env.AI_API_KEY) return faqReply(message);
 
-  const prompt = `You are the help assistant for CivicCare AI, a community complaint reporting app.
-Explain briefly how to report issues (garbage, streetlights, potholes, water leaks) and what to include (clear title, description, location).
-Statuses are Pending, In Progress and Resolved. Keep answers under 80 words.
+  const prompt = `You are the help assistant for CivicCare AI, a community complaint reporting web app.
+Facts about the app (do not mention any feature that is not listed here):
+- To report a problem, the user fills in exactly three fields: Title, Description and Location, then clicks Submit Report.
+- The AI then automatically assigns a Category, a Priority and a one-line summary.
+- There is NO photo upload, NO map and NO login for users.
+- Each complaint has a status: Pending, In Progress or Resolved. An admin updates the status.
+- The dashboard shows counts and can filter by category, status and priority.
+Answer the user's question in plain text, in at most 60 words, with no markdown formatting.
 
 User question: ${message}`;
 
