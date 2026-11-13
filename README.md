@@ -4,7 +4,7 @@
 
 Users report civic problems such as garbage, broken streetlights, potholes and water leaks. An AI model automatically assigns a **category**, **priority** and **one-line summary** to each complaint, and an admin tracks every complaint from *Pending* to *Resolved* on a dashboard.
 
-- **Live app:** [add your Vercel link here]
+- **Live app:** https://civiccare-ai-xrmp.vercel.app/
 - **Backend API:** https://civiccare-ai-2nlo.onrender.com/api/test
 - The backend runs on a free instance that sleeps when idle, so the first request can take up to a minute.
 
